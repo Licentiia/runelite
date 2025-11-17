@@ -24,20 +24,20 @@ public interface ProjectilePrayHelperConfig extends Config
     @ConfigItem(
             keyName = "extraMappings",
             name = "Extra mappings (id=label)",
-            description = "One per line: projectileId=Label (e.g. 1044=Mage)"
+            description = "One per line: projectileId=Label (e.g. 1044=Mage, 335=Range)"
     )
     default String extraMappings() { return ""; }
 
     @ConfigItem(
             keyName = "showIcon",
-            name = "Show prayer icon",
-            description = "Draw Protect-from-Magic/Missiles icon"
+            name = "Show prayer icon (over projectile)",
+            description = "Draw Protect from Magic/Missiles/Melee icon above the projectile"
     )
     default boolean showIcon() { return true; }
 
     @ConfigItem(
             keyName = "showLabel",
-            name = "Show text label",
+            name = "Show text label (over projectile)",
             description = "Draw label text box under the icon"
     )
     default boolean showLabel() { return true; }
@@ -67,8 +67,39 @@ public interface ProjectilePrayHelperConfig extends Config
     @Range(min = -50, max = 50)
     @ConfigItem(
             keyName = "verticalOffset",
-            name = "Vertical offset",
+            name = "Vertical offset (scene labels)",
             description = "Adjust vertical position of icon/label (pixels)"
     )
     default int verticalOffset() { return 0; }
+
+    /* ========= Queue Panel (fixed UI) ========= */
+
+    @ConfigItem(
+            keyName = "showQueuePanel",
+            name = "Show queue panel",
+            description = "Fixed panel showing NOW/NEXT/LATER with icons + labels + ticks"
+    )
+    default boolean showQueuePanel() { return true; }
+
+    @Range(min = 1, max = 8)
+    @ConfigItem(
+            keyName = "queueEntries",
+            name = "Queue length",
+            description = "How many upcoming prayers to list"
+    )
+    default int queueEntries() { return 3; }
+
+    @ConfigItem(
+            keyName = "showTickCountdown",
+            name = "Show tick countdown",
+            description = "Shows remaining ticks for each upcoming prayer in the queue"
+    )
+    default boolean showTickCountdown() { return true; }
+
+    @ConfigItem(
+            keyName = "queueEmptyText",
+            name = "Empty panel text",
+            description = "Shown when no threats are detected"
+    )
+    default String queueEmptyText() { return "Waiting..."; }
 }

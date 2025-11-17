@@ -102,8 +102,14 @@ class PluginListItem extends JPanel implements SearchablePlugin
 		setLayout(new BorderLayout(3, 0));
 		setPreferredSize(new Dimension(PluginPanel.PANEL_WIDTH, 20));
 
-		JLabel nameLabel = new JLabel(pluginConfig.getName());
-		nameLabel.setForeground(Color.WHITE);
+        int buttons = 21 /*pin*/ + 25 /*config if present*/ + 34 /*toggle approx*/ + 12 /*margins*/;
+        int textWidth = PluginPanel.PANEL_WIDTH - buttons;
+
+        JLabel nameLabel = new JLabel();
+        nameLabel.setText("<html><div style='width:" + textWidth + "px; white-space:nowrap;'>"
+                + pluginConfig.getName() +
+                "</div></html>");
+
 
 		if (!pluginConfig.getDescription().isEmpty())
 		{

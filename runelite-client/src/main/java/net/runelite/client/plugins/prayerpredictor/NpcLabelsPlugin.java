@@ -19,9 +19,9 @@ import net.runelite.client.ui.overlay.OverlayManager;
 
 @Slf4j
 @PluginDescriptor(
-        name = "NPC  Prayer Indicator",
+        name = PluginDescriptor.Zebe + " NPC  Prayer Indicator",
         description = "Draws a custom label above NPCs based on ID (or name, if enabled).",
-        tags = {"npc","label","overhead","pvm","pvp"}
+        tags = {"npc","label","overhead","pvm","pvp", "zebe", "cb"}
 )
 public class NpcLabelsPlugin extends Plugin
 {

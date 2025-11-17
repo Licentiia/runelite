@@ -18,9 +18,9 @@ import net.runelite.client.ui.overlay.OverlayManager;
 
 @Slf4j
 @PluginDescriptor(
-        name = "Projectile Pray Helper",
+        name = PluginDescriptor.Zebe + " Projectile Highlight",
         description = "Shows prayer icon + label for dangerous projectiles (Zulrah preset included).",
-        tags = {"projectile","prayer","zulrah","icon","label"}
+        tags = {"projectile","prayer","zulrah","icon","label", "zebe", "cb"}
 )
 public class ProjectilePrayHelperPlugin extends Plugin
 {
@@ -29,6 +29,8 @@ public class ProjectilePrayHelperPlugin extends Plugin
     @Inject private ProjectilePrayHelperOverlay overlay;
     @Inject private ProjectilePrayHelperConfig config;
     @Inject private OverlayManager overlayManager; // <-- IMPORTANT
+    @Inject private ProjectilePrayHelperQueueOverlay queueOverlay;
+
 
     @Getter
     private final Map<Integer, ProjectileRule> rules = new HashMap<>();
@@ -43,6 +45,8 @@ public class ProjectilePrayHelperPlugin extends Plugin
     protected void startUp()
     {
         overlayManager.add(overlay); // <-- REGISTER OVERLAY
+        overlayManager.add(queueOverlay);    // NEW queue panel
+
         rebuildRules();
         log.debug("Projectile Pray Helper started");
     }
@@ -51,6 +55,8 @@ public class ProjectilePrayHelperPlugin extends Plugin
     protected void shutDown()
     {
         overlayManager.remove(overlay); // <-- UNREGISTER
+        overlayManager.remove(queueOverlay); // NEW
+
         rules.clear();
         log.debug("Projectile Pray Helper stopped");
     }

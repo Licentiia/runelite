@@ -35,7 +35,13 @@ import java.lang.annotation.Target;
 @Documented
 public @interface PluginDescriptor
 {
-	String name();
+    //String Zebe = "<html>[<font color=#AA00FF>Zebe</font>] ";
+    String Zebe = "<html><font color=#b8f704M>✨</font> ";
+    //String Zebe = "<html>[<font color='#AA00FF'>Zebe</font>]</html> ";
+    //String Zebe = "<html>[<font color=#AA00FF>Zebe</font>] &nbsp;&nbsp;</html> ";
+
+
+    String name();
 
 	/**
 	 * Internal name used in the config.
